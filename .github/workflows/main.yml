@@ -4,13 +4,10 @@ on:
       tags:
         description: 'Test scenario tags'
 
-  pull_request:
-    types: [opened, synchronize]
-
 jobs:
   evaluator_job:
     name: Evaluator Job
-    runs-on: self-hosted
+    runs-on: ubuntu-18.04
     services:
       mysql:
         image: mysql:8.0.21
