@@ -1,6 +1,9 @@
 on:
-  pull_request:
-    types: [opened, synchronize]
+  workflow_dispatch:
+    inputs:
+      tags:
+        description: 'Test scenario tags'
+
 jobs:
   evaluator_job:
     name: Evaluator Job
@@ -16,8 +19,8 @@ jobs:
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1.4.3	
-        with:	
+      - uses: actions/setup-node@v1.4.3
+        with:
           node-version: '12'
       - name: Static code analysis step
         uses: betrybe/eslint-linter-action@v2
