@@ -1,4 +1,5 @@
 # Boas vindas ao repositório do API de Blogs!
+test
 
 Você já usa o GitHub diariamente para desenvolver os exercícios, certo? Agora, para desenvolver os projetos, você deverá seguir as instruções a seguir. Fique atento a cada passo, e se tiver qualquer dúvida, nos envie por Slack! #vqv 🚀
 
@@ -103,8 +104,8 @@ app.get('/', (request, response) => {
 module.exports = {
   "development": {
     "username": process.env.MYSQL_USER,
-    "password": process.env.MYSQL_PASSWORD, 
-    "database": 'blogs_api', 
+    "password": process.env.MYSQL_PASSWORD,
+    "database": 'blogs_api',
     "host": process.env.HOSTNAME,
     "dialect": 'mysql',
   },
