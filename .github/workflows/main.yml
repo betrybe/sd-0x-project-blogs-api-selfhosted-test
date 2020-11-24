@@ -3,7 +3,7 @@ on:
     inputs:
       dispatch_token:
         description: 'Token that authorize the dispatch'
-#         required: true
+        required: true
 
 jobs:
   evaluator_job:
