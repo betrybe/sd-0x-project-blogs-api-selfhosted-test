@@ -1,7 +1,7 @@
 {
   "requirements": [
     {
-      "description": "Sua aplicação deve ter o endpoint POSTs `/user`",
+      "description": "Sua aplicação deve ter o endpoint POST `/user`",
       "bonus": false
     },
     {
