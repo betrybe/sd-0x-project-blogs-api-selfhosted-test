@@ -1,9 +1,6 @@
 on:
-  workflow_dispatch:
-    inputs:
-      dispatch_token:
-        description: 'Token that authorize the dispatch'
-#         required: true
+  check_run:
+    types: [created, rerequested, requested_action]
 
 jobs:
   evaluator_job:
