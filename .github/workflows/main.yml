@@ -1,6 +1,9 @@
 on:
-  check_run:
-    types: [created, rerequested, requested_action]
+  workflow_dispatch:
+    inputs:
+      dispatch_token:
+        description: 'Token that authorize the dispatch'
+        required: true
 
 jobs:
   evaluator_job:
@@ -8,3 +11,23 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1.4.3
+        id: setup_node
+        with:
+          node-version: '12'
+      - name: Static code analysis step
+        uses: betrybe/eslint-linter-action@v2
+        id: eslint
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: LouisBrunner/checks-action@v1.1.1
+      if: always()
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        name: Test XYZ
+        conclusion: ${{ job.status }}
+        output: |
+          {"summary": "
+            ${{ steps.setup_node.outputs.summary }}\n
+            ${{ steps.eslint.outputs.summary }}
+          "}
