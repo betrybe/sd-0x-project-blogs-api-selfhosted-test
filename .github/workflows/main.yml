@@ -11,10 +11,6 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1.4.3
-        id: setup_node
-        with:
-          node-version: '12'
       - name: Static code analysis step
         uses: betrybe/eslint-linter-action@v2
         id: eslint
@@ -27,4 +23,4 @@ jobs:
           name: Test XYZ
           conclusion: ${{ job.status }}
           output: |
-            {"summary": "${{ steps.setup_node.outputs.summary }}\n${{ steps.eslint.outputs.summary }}"}
+            {"summary": "${{ steps.eslint.outputs.summary }}"}
