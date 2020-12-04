@@ -23,4 +23,6 @@ jobs:
           name: Test XYZ
           conclusion: ${{ job.status }}
           output: |
-            {"summary": "${{ steps.eslint.outputs.summary }}"}
+            {"summary": ${{ steps.eslint.outputs.summary }}"}
+    runs:
+      post: echo ${{ job.status }}
