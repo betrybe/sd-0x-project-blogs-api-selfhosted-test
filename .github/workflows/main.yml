@@ -4,11 +4,14 @@ on:
       dispatch_token:
         description: 'Token that authorize the dispatch'
         required: true
+      head_sha:
+        description: 'Head commit SHA that dispatched the workflow'
+        required: true
 
 jobs:
   evaluator_job:
     name: Evaluator Job
-    runs-on: ubuntu-18.04
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
       - name: Static code analysis step
@@ -16,13 +19,3 @@ jobs:
         id: eslint
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: LouisBrunner/checks-action@v1.1.1
-        if: always()
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          name: Test XYZ
-          conclusion: ${{ job.status }}
-          output: |
-            {"summary": ${{ steps.eslint.outputs.summary }}"}
-    runs:
-      post: echo ${{ job.status }}
