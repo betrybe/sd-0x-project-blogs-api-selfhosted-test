@@ -11,7 +11,7 @@ describe('Sua aplicação deve ter o endpoint POST `/post`', () => {
   });
 
   it('Será validado que é possível cadastrar um blogpost com sucesso', async () => {
-    let token;
+    let token
     await frisby
       .post(`${url}/login`,
         {
